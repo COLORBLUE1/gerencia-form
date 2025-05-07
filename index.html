@@ -1,10 +1,528 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CERTIFICADO DE PARTICIPACIÓN - GRUPO Miro</title>
+    <title>CERTIFICADO DE PARTICIPACIÓN</title>
+    <style>
+        :root {
+            --color-primario: #2c3e50;
+            --color-secundario: #7B68EE;
+            --color-terciario: #3498db;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: var(--color-primario);
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--color-secundario);
+            padding-bottom: 15px;
+            font-size: 28px;
+        }
+        
+        .grupo-info {
+            background-color: #f0f7ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--color-secundario);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--color-primario);
+        }
+        
+        select, input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 5px 0 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        .calificacion-input {
+            width: 80px;
+            text-align: center;
+            padding: 10px;
+            margin: 5px 0 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        button {
+            background-color: var(--color-secundario);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            margin: 10px 5px;
+            font-weight: 600;
+        }
+        
+        button:hover {
+            background-color: #6A5ACD;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .feedback-section {
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 5px solid var(--color-terciario);
+        }
+        
+        .comparativa-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+        
+        .herramienta-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--color-terciario);
+        }
+        
+        .certificado {
+            display: none;
+            background: white;
+            padding: 40px;
+            border: 15px double var(--color-primario);
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 30px;
+            position: relative;
+            box-shadow: 0 0 25px rgba(0,0,0,0.1);
+        }
+        
+        .integrantes-list {
+            text-align: left;
+            display: inline-block;
+            margin: 0 auto;
+        }
+        
+        .organizadores {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .evaluacion-final {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-left: 5px solid var(--color-secundario);
+        }
+        
+        .pie-certificado {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ccc;
+            font-size: 16px;
+            color: var(--color-primario);
+        }
+        
+        .mensaje-companeros {
+            font-style: italic;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #fffaf0;
+            border-left: 4px solid #ffa500;
+        }
+        
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            .certificado, .certificado * {
+                visibility: visible;
+            }
+            .certificado {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                border: none;
+                box-shadow: none;
+                padding: 50px;
+                margin: 0;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Actividad Intermedia - Gerencia de Proyectos<br>
+        <small style="font-size: 18px; color: var(--color-secundario);">Organizado por: Grupo ClickUp</small></h1>
+        
+        <div id="seccion-organizadores" class="organizadores">
+            <h3>Integrantes del equipo organizador:</h3>
+            <div class="integrantes-list">
+                <div>• Tegue Lucumi Jaider</div>
+                <div>• Ismael Yate Calderón</div>
+                <div>• Juan José Vernaza Mayor</div>
+                <div>• Juan Camilo Zúñiga Potes</div>
+                <div>• Sol Mosquera Camilo Abel</div>
+                <div>• Urresty Montero Juan Pablo</div>
+            </div>
+            
+            <p><strong>Profesor:</strong> Idan Kusniec Posklinski</p>
+            
+            <div class="mensaje-companeros">
+                <p>"Como compañeros de lucha, es una satisfacción saber que todo el sacrificio, los días de desvelo y el esfuerzo de estos años nos acercan a la meta. Cada paso que damos bajo el lema 'Saber para Servir' construye el profesional que seremos mañana. ¡Sigue adelante, que tu dedicación inspira!"</p>
+                <p style="text-align: right;">—Con respeto, el equipo ClickUp</p>
+            </div>
+        </div>
+        
+        <div id="formulario-inicial">
+            <div class="grupo-info">
+                <h2>Información del Grupo</h2>
+                <div class="form-group">
+                    <label for="nombre-grupo">Seleccione su grupo asignado:</label>
+                    <select id="nombre-grupo" required>
+                        <option value="">Seleccione...</option>
+                        <option value="Miro">Grupo 1: Miro</option>
+                        <option value="Trello">Grupo 2: Trello</option>
+                        <option value="Bitrix24">Grupo 3: Bitrix24</option>
+                        <option value="Mural">Grupo 4: Mural</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Integrantes del equipo:</label>
+                <textarea id="integrantes" rows="4" placeholder="Ingrese los nombres completos de los integrantes, separados por comas" required></textarea>
+                <small>Ej: Juan Pérez, María González, Carlos Rodríguez</small>
+            </div>
+            
+            <button id="btn-iniciar" onclick="iniciarActividad()">Iniciar Actividad</button>
+        </div>
+        
+        <div id="actividad-container" style="display: none;">
+            <h2 id="titulo-actividad">Depuración de JavaScript para Interacción Básica</h2>
+            
+            <div class="feedback-section">
+                <h3>Comparativa de Herramientas</h3>
+                <p>Como equipo <strong id="nombre-grupo-activo"></strong>, califique ClickUp en comparación con <strong id="herramienta-comparar"></strong>:</p>
+                
+                <div class="comparativa-grid">
+                    <div class="herramienta-card">
+                        <h4>ClickUp</h4>
+                        <p><small>Características principales:</small></p>
+                        <ul style="text-align: left; padding-left: 20px;">
+                            <li>Gestión de tareas y proyectos todo-en-uno</li>
+                            <li>Vistas múltiples (Lista, Tablero, Calendario)</li>
+                            <li>Colaboración en tiempo real</li>
+                        </ul>
+                        
+                        <label>Documentación (1-10):</label>
+                        <input type="number" id="clickup-doc" min="1" max="10" class="calificacion-input" required>
+                        
+                        <label>Gestión de proyectos (1-10):</label>
+                        <input type="number" id="clickup-gestion" min="1" max="10" class="calificacion-input" required>
+                        
+                        <label>Facilidad de uso (1-10):</label>
+                        <input type="number" id="clickup-facilidad" min="1" max="10" class="calificacion-input" required>
+                    </div>
+                    
+                    <div class="herramienta-card" id="comparativa-grupo">
+                        <!-- Se llena dinámicamente según el grupo seleccionado -->
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="preferencia">¿Cuál herramienta prefieren para esta actividad?</label>
+                    <select id="preferencia" required>
+                        <option value="">Seleccione...</option>
+                        <option value="Miro">Miro</option>
+                        <option value="Trello">Trello</option>
+                        <option value="Bitrix24">Bitrix24</option>
+                        <option value="Mural">Mural</option>
+                        <option value="ClickUp">ClickUp</option>
+                        <option value="Otras">Otras APP</option>
+                    </select>
+                    <label for="razon-preferencia">Explique brevemente su preferencia:</label>
+                    <textarea id="razon-preferencia" rows="3" placeholder="Describa las razones de su preferencia" required></textarea>
+                </div>
+            </div>
+            
+            <div class="evaluacion-final" id="evaluacion-final">
+                <h3>Evaluación de la Actividad</h3>
+                
+                <div class="form-group">
+                    <label for="experiencia">¿Qué les pareció la actividad? (qué aprendieron, qué mejorarían)</label>
+                    <textarea id="experiencia" rows="4" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="duracion-actividad">Tiempo estimado que tomó completar la actividad:</label>
+                    <div>
+                        <input type="number" id="duracion-actividad" class="calificacion-input" min="45" value="45" required>
+                        <span>minutos (mínimo 45 minutos)</span>
+                    </div>
+                </div>
+                
+                <button id="btn-finalizar" onclick="finalizarActividad()">Generar Certificado</button>
+            </div>
+        </div>
+        
+        <div class="certificado" id="certificado">
+            <h2>CERTIFICADO DE PARTICIPACIÓN</h2>
+            <p>Se otorga el presente certificado a:</p>
+            <h3 id="certificado-equipo"></h3>
+            
+            <div class="integrantes">
+                <p>Integrantes:</p>
+                <div class="integrantes-list" id="certificado-integrantes"></div>
+            </div>
+            
+            <p>Por haber completado satisfactoriamente la actividad:</p>
+            <p><strong>"Depuración de JavaScript para Interacción Básica"</strong></p>
+            <p>Con una duración de <strong><span id="certificado-duracion">45</span> minutos</strong></p>
+            <p>Como parte de la materia <strong>Gerencia de Proyectos</strong></p>
+            <p>de la carrera <strong>Ingeniería de Sistemas - 9° Semestre</strong></p>
+            <p>Fecha: <span id="certificado-fecha"></span></p>
+            
+            <div class="mensaje-companeros">
+                <p>"Como compañeros de lucha, es una satisfacción saber que todo el sacrificio, los días de desvelo y el esfuerzo de estos años nos acercan a la meta. Cada paso que damos bajo el lema 'Saber para Servir' construye el profesional que seremos mañana. ¡Sigue adelante, que tu dedicación inspira!"</p>
+                <p style="text-align: right;">—Con respeto, el equipo ClickUp</p>
+            </div>
+            
+            <div class="pie-certificado">
+                <p>Actividad de clase - Grupo organizador ClickUp</p>
+            </div>
+            
+            <div style="margin-top: 40px; text-align: center;" class="no-print">
+                <button onclick="descargarCertificado()">Descargar Certificado</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let actividad = {
+            grupo: "",
+            integrantes: [],
+            evaluacion: {
+                clickup: {},
+                otraHerramienta: {},
+                preferencia: "",
+                razonPreferencia: "",
+                experiencia: "",
+                duracion: 45
+            }
+        };
+        
+        function iniciarActividad() {
+            const grupoSelect = document.getElementById("nombre-grupo");
+            const integrantesInput = document.getElementById("integrantes");
+            
+            if (!grupoSelect.value) {
+                alert("Por favor seleccione su grupo asignado");
+                return;
+            }
+            
+            if (!integrantesInput.value) {
+                alert("Por favor ingrese los nombres de los integrantes");
+                return;
+            }
+            
+            // Configurar actividad
+            actividad.grupo = grupoSelect.value;
+            actividad.integrantes = integrantesInput.value.split(',').map(nombre => nombre.trim());
+            
+            // Configurar interfaz
+            document.getElementById("formulario-inicial").style.display = "none";
+            document.getElementById("seccion-organizadores").style.display = "none";
+            document.getElementById("actividad-container").style.display = "block";
+            document.getElementById("nombre-grupo-activo").textContent = "Grupo " + actividad.grupo;
+            document.getElementById("herramienta-comparar").textContent = actividad.grupo;
+            
+            // Configurar comparativa según grupo
+            const comparativaContainer = document.getElementById("comparativa-grupo");
+            let caracteristicas = "";
+            
+            switch(actividad.grupo) {
+                case "Miro": 
+                    caracteristicas = `
+                        <li>Pizarras digitales infinitas</li>
+                        <li>Plantillas para diagramas y lluvia de ideas</li>
+                        <li>Integración con múltiples apps</li>
+                    `;
+                    break;
+                case "Trello": 
+                    caracteristicas = `
+                        <li>Sistema de tableros y tarjetas</li>
+                        <li>Simplicidad y facilidad de uso</li>
+                        <li>Power-Ups para extensibilidad</li>
+                    `;
+                    break;
+                case "Bitrix24": 
+                    caracteristicas = `
+                        <li>CRM y gestión de proyectos integrados</li>
+                        <li>Comunicación interna</li>
+                        <li>Automatización de flujos de trabajo</li>
+                    `;
+                    break;
+                case "Mural": 
+                    caracteristicas = `
+                        <li>Espacios de trabajo visuales</li>
+                        <li>Herramientas de brainstorming</li>
+                        <li>Facilita reuniones remotas</li>
+                    `;
+                    break;
+            }
+            
+            comparativaContainer.innerHTML = `
+                <h4>${actividad.grupo}</h4>
+                <p><small>Características principales:</small></p>
+                <ul style="text-align: left; padding-left: 20px;">
+                    ${caracteristicas}
+                </ul>
+                <label>Documentación (1-10):</label>
+                <input type="number" id="otra-doc" min="1" max="10" class="calificacion-input" required>
+                
+                <label>Gestión de proyectos (1-10):</label>
+                <input type="number" id="otra-gestion" min="1" max="10" class="calificacion-input" required>
+                
+                <label>Facilidad de uso (1-10):</label>
+                <input type="number" id="otra-facilidad" min="1" max="10" class="calificacion-input" required>
+            `;
+        }
+        
+        function finalizarActividad() {
+            // Validar calificaciones
+            const clickupDoc = parseInt(document.getElementById("clickup-doc").value);
+            const clickupGestion = parseInt(document.getElementById("clickup-gestion").value);
+            const clickupFacilidad = parseInt(document.getElementById("clickup-facilidad").value);
+            const otraDoc = parseInt(document.getElementById("otra-doc").value);
+            const otraGestion = parseInt(document.getElementById("otra-gestion").value);
+            const otraFacilidad = parseInt(document.getElementById("otra-facilidad").value);
+            const preferencia = document.getElementById("preferencia").value;
+            const razonPreferencia = document.getElementById("razon-preferencia").value;
+            const duracion = parseInt(document.getElementById("duracion-actividad").value);
+            const experiencia = document.getElementById("experiencia").value;
+            
+            // Validaciones
+            if ([clickupDoc, clickupGestion, clickupFacilidad, otraDoc, otraGestion, otraFacilidad].some(isNaN)) {
+                alert("Por favor complete todas las calificaciones (1-10)");
+                return;
+            }
+            
+            if (!preferencia || !razonPreferencia) {
+                alert("Por favor indique su herramienta preferida y la razón");
+                return;
+            }
+            
+            if (duracion < 45) {
+                alert("La duración mínima de la actividad debe ser 45 minutos");
+                return;
+            }
+            
+            if (!experiencia) {
+                alert("Por favor comparta su experiencia con la actividad");
+                return;
+            }
+            
+            // Guardar datos
+            actividad.evaluacion = {
+                clickup: {
+                    documentacion: clickupDoc,
+                    gestion: clickupGestion,
+                    facilidad: clickupFacilidad,
+                    promedio: ((clickupDoc + clickupGestion + clickupFacilidad) / 3).toFixed(1)
+                },
+                otraHerramienta: {
+                    documentacion: otraDoc,
+                    gestion: otraGestion,
+                    facilidad: otraFacilidad,
+                    promedio: ((otraDoc + otraGestion + otraFacilidad) / 3).toFixed(1)
+                },
+                preferencia: preferencia,
+                razonPreferencia: razonPreferencia,
+                experiencia: experiencia,
+                duracion: duracion
+            };
+            
+            // Mostrar certificado
+            mostrarCertificado();
+        }
+        
+        function mostrarCertificado() {
+            document.getElementById("actividad-container").style.display = "none";
+            
+            // Configurar certificado
+            document.getElementById("certificado-equipo").textContent = "Grupo " + actividad.grupo;
+            
+            const integrantesList = document.getElementById("certificado-integrantes");
+            integrantesList.innerHTML = actividad.integrantes.map(integrante => 
+                `<div>• ${integrante}</div>`).join('');
+            
+            document.getElementById("certificado-duracion").textContent = actividad.evaluacion.duracion;
+            
+            const fecha = new Date();
+            document.getElementById("certificado-fecha").textContent = 
+                fecha.toLocaleDateString('es-ES', { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+            
+            document.getElementById("certificado").style.display = "block";
+        }
+        
+        function descargarCertificado() {
+            // Crear un nuevo documento HTML solo con el certificado
+            const certificadoHTML = `
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CERTIFICADO DE PARTICIPACIÓN - GRUPO ${actividad.grupo}</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -55,21 +573,26 @@
     <div class="certificado">
         <h2>CERTIFICADO DE PARTICIPACIÓN</h2>
         <p>Se otorga el presente certificado a:</p>
-        <h3>Grupo Miro</h3>
+        <h3>Grupo ${actividad.grupo}</h3>
         
         <div class="integrantes">
             <p>Integrantes:</p>
             <div class="integrantes-list">
-                <div>• drth</div>
+                ${actividad.integrantes.map(integrante => `<div>• ${integrante}</div>`).join('')}
             </div>
         </div>
         
         <p>Por haber completado satisfactoriamente la actividad:</p>
         <p><strong>"Depuración de JavaScript para Interacción Básica"</strong></p>
-        <p>Con una duración de <strong>45 minutos</strong></p>
+        <p>Con una duración de <strong>${actividad.evaluacion.duracion} minutos</strong></p>
         <p>Como parte de la materia <strong>Gerencia de Proyectos</strong></p>
         <p>de la carrera <strong>Ingeniería de Sistemas - 9° Semestre</strong></p>
-        <p>Fecha: martes, 6 de mayo de 2025</p>
+        <p>Fecha: ${new Date().toLocaleDateString('es-ES', { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        })}</p>
         
         <div class="mensaje-companeros">
             <p>"Como compañeros de lucha, es una satisfacción saber que todo el sacrificio, los días de desvelo y el esfuerzo de estos años nos acercan a la meta. Cada paso que damos bajo el lema 'Saber para Servir' construye el profesional que seremos mañana. ¡Sigue adelante, que tu dedicación inspira!"</p>
@@ -82,4 +605,26 @@
     </div>
 </body>
 </html>
+            `;
             
+            // Generar nombre de archivo
+            const nombreArchivo = `CERTIFICADO_GRUPO-${actividad.grupo}.html`;
+            
+            // Crear blob y descargar
+            const blob = new Blob([certificadoHTML], {type: 'text/html'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = nombreArchivo;
+            document.body.appendChild(a);
+            a.click();
+            
+            // Limpiar
+            setTimeout(() => {
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            }, 100);
+        }
+    </script>
+</body>
+</html>
